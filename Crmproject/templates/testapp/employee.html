@@ -1,0 +1,44 @@
+{%  extends 'testapp/main.html' %}
+
+{% block content %}
+
+
+</div>
+		<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Employee</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Phone Number</th>
+							<th>Email</th>
+							<th>Company</th>
+							<th>Department</th>
+							<th>Salary</th>
+						</tr>
+
+                        {% for k in employee %}
+							<tr>
+								<td>{{k.first_name}}</td>
+								<td>{{k.last_name}}</td>
+								<td>{{k.phone_no}}</td>
+								<td>{{k.email}}</td>
+								<td>{{k.company}}</td>
+								<td>{{k.department}}</td>
+								<td>{{k.salary}}</td>
+							</tr>
+                     {% endfor %}
+
+					</table>
+				</div>
+			</div>
+
+		</div>
+
+{% endblock content %}

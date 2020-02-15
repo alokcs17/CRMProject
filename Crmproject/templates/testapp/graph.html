@@ -1,0 +1,114 @@
+{%  extends 'testapp/main.html' %}
+{% load static %}
+{% block content %}
+<!--<script>
+window.onload = function() {
+
+var chart = new CanvasJS.Chart("pie_chart", {
+	animationEnabled: true,
+	title: {
+		text: "Company Data"
+	},
+	data: [{
+		type: "pie",
+		startAngle: 240,
+		yValueFormatString: "##0.00\"%\"",
+		indexLabel: "{label} {y}",
+		dataPoints: [
+
+			{y: 60.45, label: "Google"},
+			{y: 12.31, label: "Microsoft"},
+			{y: 7.06, label: "Facebook"},
+			{y: 9.91, label: "Nest Technologis"},
+			{y: 5.26, label: "Decimal Tech"}
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
+<div id="pie_chart" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>-->
+
+<script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+	<script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+	<script type="text/javascript">
+	data_from_django = {{ my_data|safe }};
+		FusionCharts.ready(function(){
+			var chartObj = new FusionCharts({
+    type: 'pie2d',
+    renderAt: 'chart-container',
+    width: '550',
+    height: '350',
+    dataFormat: 'json',
+    dataSource: {
+        "chart": {
+            "caption": "Split of company name",
+            "subCaption": "All Company",
+            "showPercentInTooltip": "0",
+            "decimals": "1",
+            "useDataPlotColorForLabels": "1",
+            //Theme
+            "theme": "fusion"
+        },
+        "data": data_from_django
+    }
+}
+);
+			chartObj.render();
+		});
+	</script>
+
+		<div id="chart-container">FusionCharts XT will load here!</div>
+
+<br><br>
+
+	<script type="text/javascript">
+		FusionCharts.ready(function(){
+			var chartObj = new FusionCharts({
+    type: 'column3d',
+    renderAt: 'chart-bar',
+    width: '550',
+    height: '350',
+    dataFormat: 'json',
+    dataSource: {
+        "chart": {
+            "caption": "Employee Detail Salary Wise",
+            "subCaption": "All Employee",
+            "showPercentInTooltip": "0",
+            "decimals": "1",
+            "useDataPlotColorForLabels": "1",
+            //Theme
+            "theme": "fusion"
+        },
+        "data": [{
+            "label": "<10000",
+            "value": "2"
+        }, {
+            "label": "10K-20K",
+            "value": "5"
+        }, {
+            "label": "20K-30K",
+            "value": "3"
+        }, {
+            "label": "30K-40K",
+            "value": "1"
+        },{
+          "label": "40K+",
+          "value":"0"
+        }]
+    }
+}
+);
+			chartObj.render();
+		});
+	</script>
+
+		<div id="chart-bar">FusionCharts XT will load here!</div>
+
+<form id="x" name="{{form.form_name}}" novalidate>
+	{{form}}
+</form>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{%  extends 'testapp/main.html' %}
+
+{% block content %}
+
+{%  include 'testapp/status.html' %}
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>Employee:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_employee' %}">Create Employee</a>
+			<table class="table table-sm">
+				<tr>
+
+					<th>Employee</th>
+                    <th>Company</th>
+				</tr>
+
+                 {% for i in employees %}
+					<tr>
+						<td>{{i.first_name}} {{i.last_name}}</td>
+						<td>{{i.company}}</td>
+
+					</tr>
+
+              {% endfor %}
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>Company</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_company' %}">Create Company</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Company Name</th>
+					<th>Country Name</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+                 {% for j in companys %}
+					<tr>
+						<td>{{j.name}}</td>
+						<td>{{j.country}}</td>
+						<td>{{j.status}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'update_company' j.id%}">Update</a></td>
+
+						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_company' j.id%}">Delete</a></td>
+
+					</tr>
+             {%endfor%}
+		
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock  %}
+

@@ -1,0 +1,101 @@
+{% extends 'testapp/main.html' %}
+
+{% block content %}
+
+<br>
+
+<div class ="row">
+
+<div class ="col-md">
+
+<div class ="card card-body" id="total-employee">
+
+<h5> Company_Status </h5>
+<hr>
+
+<h1 style = "text-align: center;padding: 10px"> {{company_status}} </h1>
+</div>
+</div>
+
+<!--<div class ="col-md">
+
+<div class ="card card-body">
+
+<h5> Contact Information </h5>
+<hr>
+<p> Email:</p>
+<p> Phone: </p>
+</div>
+</div>-->
+
+<div class ="col-md">
+
+<div class ="card card-body" id="total-company">
+
+<h5> Total Company </h5>
+<hr>
+<h1 style = "text-align: center;padding: 10px"> {{total_company}} </h1>
+</div>
+</div>
+</div>
+
+<br>
+<div class ="row">
+
+<div class ="col">
+
+<div class ="card card-body" id="search">
+
+<form method = "get">
+{{myFilter.form}}
+
+<button class ="btn btn-primary" type="submit" > Search </button>
+
+</form>
+
+</div>
+</div>
+
+</div>
+<br>
+
+<div class ="row">
+
+<div class ="col-md">
+
+<div class ="card card-body">
+<a class="btn btn-sm btn-info" href="{% url 'export_users_xls' %}">Excel File Download</a>
+<table class ="table table-sm">
+
+<tr>
+
+    <th> Company Name </th>
+    <th> Country Name </th>
+    <th> Email </th>
+    <th> Phone </th>
+    <th> Status </th>
+    <th> Update </th>
+    <th> Remove </th>
+</tr>
+
+{% for g in company %}
+    <tr>
+
+       <td> {{g.name}} </td>
+       <td> {{g.country}} </td>
+         <td> {{g.email}} </td>
+         <td> {{g.phone}} </td>
+         <td> {{g.status}} </td>
+        <td> <a class ="btn btn-sm btn-info" href="{% url 'update_company' g.id%}"> Update </a> </td>
+
+        <td><a class ="btn btn-sm btn-danger" href="{% url 'delete_company' g.id%}"> Delete </a> </td>
+
+     </tr>
+{% endfor %}
+
+</table>
+    </div>
+</div>
+</div>
+
+{% endblock %}

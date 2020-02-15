@@ -1,0 +1,40 @@
+        body{
+        background-color:#FFEFD5;
+        }
+
+        #total-employee
+        {
+        background-color:pink;
+        }
+
+        #total-company
+        {
+        background-color:#00FFFF;
+        }
+
+        #company-status
+        {
+        background-color:#00FFFF;
+        }
+
+        #All-avg-salary
+        {
+        background-color:#8FBC8F;
+        }
+
+        #avg-salary
+        {
+        background-color:#BDB76B;
+        }
+
+
+
+        .container {
+height: 100vh;
+}
+
+.chart-wrapper {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+}
